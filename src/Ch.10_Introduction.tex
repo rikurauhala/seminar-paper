@@ -1,0 +1,19 @@
+\chapter{Introduction\label{ch:introduction}}
+
+Authentication is a common challenge that software developers encounter in their line of work. Typically, an application requires a means to verify a user's identity before granting them access to a particular feature or piece of data. A conventional way to implement authentication is to request users to choose a password. While alternatives exist, passwords remain the most popular method \citep{zimmermann_password_2020}.
+
+However, authentication based on passwords only is often not secure enough. Users tend to choose weak, easily guessable passwords \citep{shen_user_2016} or reuse the same password on multiple services \citep{zimmermann_password_2020}. Passwords and their hashes are also frequently compromised and leaked to the Internet \citep{alsabah_your_2018}. Even if a service is cryptographically secure and contains no vulnerabilities, user accounts protected by passwords can still become compromised if a user is targeted directly via social engineering \citep{gehl_social_2022}, keylogger malware \citep{singh_keylogger_2021} or other malicious methods.
+
+To address the shortcomings of password-based authentication, an additional layer of security can be introduced. \textit{Multi-factor authentication} (or MFA for short) requires the user to verify their identity in more than one way \citep{owasp_multifactor_2024}.
+
+In this seminar report, the challenges of implementing multi-factor authentication are inspected from a software developer's perspective. \textit{Implementation} refers to the process of adding support for MFA in the application under development.
+
+The research process is guided by the following research questions.
+
+\begin{quote}
+    \textbf{Research question 1\label{rq1}}: What challenges do software developers face when implementing multi-factor authentication?
+
+    \textbf{Research question 2\label{rq2}}: How can these challenges be overcome?
+\end{quote}
+
+In chapter~\ref{ch:background} a technical overview of the subject is provided and the details of multi-factor authentication are introduced. In chapter~\ref{ch:challenges} the challenges of implementation are explored and solutions are presented. Chapter~\ref{ch:challenges} provides answers to the research questions. Chapter~\ref{ch:conclusions} provides conclusions and summarises the findings of this seminar report.

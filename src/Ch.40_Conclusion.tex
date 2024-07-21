@@ -1,0 +1,17 @@
+\chapter{Conclusion\label{ch:conclusions}}
+
+Implementing multi-factor authentication is recommended for all applications that handle any confidential information. In conclusion, while MFA is a powerful additional security measure, various aspects must be considered for a successful implementation.
+
+To summarise the findings and provide suggestions for software developers, the following steps are recommended.
+
+\begin{enumerate}
+    \item \textbf{User adoption}: Unless multi-factor authentication is made mandatory, only a fraction of all users are likely to enable it. Adoption rates can be increased by improving usability and user experience as well as educating users on the necessity of MFA. Using tailored messages and personalised approaches are suggested.
+
+    \item \textbf{User experience}: Consistency and familiarity should not be overlooked. Users expect a consistent experience across different services and developers should adhere to commonly used terms. Unless there are more than two factors, the term \textit{two-factor authentication} should be used. Making MFA settings easy to discover and providing clear instructions during the setup phase can enhance the user experience.
+
+    \item \textbf{Usability}: Usability should be taken into account. While typing a password is relatively easy, using more complex factors can pose challenges for users. Developers should ensure that MFA methods are easy to use and accessible, especially for people with disabilities. Usability affects willingness to adopt MFA.
+
+    \item \textbf{Security}: MFA adds an extra layer of security, but it is not completely foolproof. Each factor can be compromised in various ways, highlighting the importance of combining different types of factors to mitigate risks. The specific security measures should be considered for each factor selected.
+
+    \item \textbf{Account recovery}: Implementing an account recovery mechanism for MFA is mandatory. An automated solution such as providing single-use recovery codes is preferable. Security aspects of the chosen method must be considered.
+\end{enumerate}

@@ -1,0 +1,138 @@
+\chapter{Challenges\label{ch:challenges}}
+
+With additional security comes additional complexity. Deploying a conventional password-based authentication mechanism is relatively straightforward, but implementing multi-factor authentication comes with its own set of problems and challenges.
+
+In this chapter, challenges related to the implementation of multi-factor authentication are explored.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{User adoption}
+
+It can be difficult to get users to adopt multi-factor authentication in the first place \citep{golla_driving_2021}. Some applications such as online banking platforms require MFA to be enabled for every user, but making it mandatory may not always be a practical solution. Some of the challenges discussed in this chapter could be thought of as sub-problems of user adoption: how do user experience, usability and security affect willingness of users to setup and utilise multi-factor authentication?
+
+Most major websites and online services began offering multi-factor authentication in the early 2010s: Facebook and Google in 2011; Blizzard and Coinbase in 2012; Apple, GitHub, LinkedIn, Microsoft and Twitter in 2013 \citep[Fig.~1]{petsas_two-factor_2015}. However, even if multi-factor authentication is supported, not all users will take advantage of it. As modern web applications can have hundreds of millions, even billions of registered users, not everyone can be expected to have enough expertise in security and stay vigilant against attempts to compromise their accounts and steal their data.
+
+While most notable websites have implemented some form of multi-factor authentication as of April 2024 \citep{2factorauth_2fadirectory_2024}, adoption rates among users remain low. Finding recent data on MFA adoption rates for each major website is difficult, as most companies do not make this information public. The share of users who have enabled multi-factor authentication appears to vary a lot depending on the service or industry. \textcite{twitter_account_2022} reported that only 2.6\% of active Twitter users had at least one 2FA method enabled in 2021. It was estimated by \textcite[Table~1]{petsas_two-factor_2015} that 6.4\% of Google accounts were protected by MFA in 2015. It should be noted that while X (formerly known as Twitter) is a microblogging platform, Google offers a large number of various services and collects more personal information about their users.
+
+As the need for additional security has become more apparent, some websites outside of banking and finance have begun making multi-factor authentication mandatory for their users. In 2021, Google announced plans for automatically enabling MFA for 150 million users \citep{google_making_2021}. In 2023, GitHub started requiring all contributors to have at least one form of MFA enabled to keep using the site unrestricted \citep{github_about_2024}. This is a considerable change in policy from industry giants as MFA started seeing widespread, voluntary adoption only about a decade ago.
+
+Users may not always clearly understand why enabling MFA is necessary. Providing users with an accurate model of how MFA works and why it is needed helps users to accept and enable multi-factor authentication \citep[109-110]{golla_driving_2021}. \textcite{reese_usability_2019} found that some users feel that their data is not worth the extra protection and the additional work that using multi-factor authentication requires. The importance of the data being protected affects the willingness to use MFA: users are more likely to enable multi-factor authentication for important accounts e.g. on financial or banking applications \citep[365]{reese_usability_2019}, \citep[2]{marky_nah_2022}
+. \textcite[5447]{das_mfa_2020} found that differences in computer expertise levels greatly affect user perception of multi-factor authentication: experienced users are more likely to understand the necessity of MFA while non-experts tend to view it as optional. \textcite[12]{marky_nah_2022} found similar results: experienced users favour MFA and understand the trade-off between usability and security.
+
+\textcite[109-110]{golla_driving_2021} found that using tailored messages to instil a sense of personal responsibility for security can be used to increase willingness for MFA adoption. They also found that a common marketing strategy of including the user's name in these messages would further increase the number of users enabling MFA.
+
+Based on these findings, users can be educated to take better care of their own security. Being aware of the risks and common tactics used by online criminals could also help users become less likely to fall for phishing or social engineering.
+
+Good communication about the security benefits of multi-factor authentication is critical to user adoption. Users are generally more accepting of more complicated and time-consuming authentication processes if the security benefits are made clear \citep{marky_nah_2022}. It is therefore recommended to software developers to make sure that their users understand why they are required to setup and enable multi-factor authentication.
+
+User adoption can also be boosted by paying attention to the other aspects of MFA implementation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{User experience}
+
+According to \textit{Jakob's law of Internet user experience}, users expect things to work the way they are already familiar with \citep{yablonski_laws_2020}. For this reason, most websites tend to resemble each other and consist of similar elements: headers, footers, navigation bars, clickable buttons and so on. Multi-factor authentication is not an exception: users expect familiarity and a consistent experience across different services. This presents a challenge for software developers as there are multiple ways to implement multi-factor authentication, each with a set of suitable use cases.
+
+Issues with consistency begin with the term itself. In the context of this seminar report, the name \textit{multi-factor} authentication is preferred to \textit{two-factor} authentication. This is because two-factor authentication is always a form of multi-factor authentication but multi-factor authentication is not necessary implemented with just two factors. It is therefore more accurate to discuss the concept using the more broader term. Using another name could be more easily recognised by users and should be preferred in applications.
+
+Based on a systematic study of 85 top-ranked websites, \textcite[10]{lyastani_systematic_2023} found that the most commonly used names for referring to the same concept were two-factor authentication (49.4\% of the websites) and \textit{two-step verification} (28.2\%). An additional 3.5\% of the websites surveyed used the term \textit{two-step authentication}. Only 4.7\% used the term multi-factor authentication. The rest (14.1\%) used another term.
+
+To address the naming issue, developers should stick to a name that users recognise. Most of the top websites use the term two-factor authentication or two-step verification \citep[10]{lyastani_systematic_2023}. While the most visited websites form only a tiny fraction of all websites on the Internet, they are visited by billions of users and design choices made by the large companies behind them lead the way for other developers. The term adopted and endorsed by the top websites has a huge impact on user perception and familiarity of the concept. Additionally, Google Trends \citep{google_trends1_2024, google_trends2_2024} indicates a much higher search volume for 2FA compared to MFA in the past five years. If only two factors are used, developers should use the term two-factor authentication.
+
+As inexperienced users occasionally have trouble finding relevant information, \textcite[5447]{das_mfa_2020} recommend making the settings for MFA easy to discover. According to \textcite[10]{lyastani_systematic_2023}, an overwhelming majority (91.8\%) of the top websites surveyed placed 2FA settings under either the \textit{security} or the \textit{account} category. For a consistent user experience, this is also a recommended practice unless there is a reason to decide otherwise.
+
+\textcite[12]{lyastani_systematic_2023} also found that overall there are inconsistencies with the user experience of websites, even among the industry giants such as Apple or Google. Their proposed solution is for official recommendations to be created and published by "influential industry associations and consortia". While such a standardised solution does not exist, software developers should attempt to identify and emulate current practices used on other websites. Overall, the significance of a consistent user experience should not be dismissed.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Usability}
+
+For a successful implementation of multi-factor authentication, usability must be taken into consideration. Typing a username and a password is relatively effortless due to the simplicity and popularity of the practice. Other more sophisticated methods could prove difficult for users to handle \citep{bonneau_quest_2012}. The extra time and effort required is a common challenge as it makes authentication more laborious and time-consuming \citep[110]{golla_driving_2021}. As multi-factor authentication adds a whole new level of complexity, it must be made as easy as possible to use. Users agree that usability is a crucial part in adopting MFA \citep[13]{marky_nah_2022}.
+
+Accessibility is part of usability and the needs of all users must be considered. People with disabilities should be taken into account, especially in the case of biometrics: fingerprint scanning may not be possible for people who have lost limbs and visually impaired people could be unable to use iris-based authentication \citep[9]{ometov_multi-factor_2018}. Alternative ways to authenticate should be offered as a single factor type will not always fit the needs of every user \citep[51]{grassi_digital_2017}. The accessibility aspect can be improved by \textit{personalisation} and \textit{customisation} \citep[22]{marky_nah_2022}.
+
+\textcite{reese_usability_2019} conducted a usability study of several commonly used multi-factor authentication methods. The study found that if the setup process for MFA is properly implemented, users tend to find it easy to complete. Common usability issues identified in the study included failing to enter six-digit time-based one-time password (TOTP) codes before they expired and users not always having their MFA device readily available when needed. \textcite[5448]{das_mfa_2020} also criticise the dependency on mobile devices. They suggest looking into alternative, more sophisticated ways that rely less on a specific physical device. \textcite[21]{marky_nah_2022} make a similar recommendation:  for mobile approaches, the second factor should be independent of the device itself. This is also a security consideration: it should not be possible to compromise two factors at the same time.
+
+For improved usability, \textcite[368]{reese_usability_2019} recommend instructing users during the setup phase so that they do not dismiss any important instructions. While they do not recommend any specific method for implementing MFA, push notifications and SMS messages received the highest scores from the survey participants.
+
+\textcite{karim_choosing_2024} conducted a comparative analysis of various MFA methods. Based on the results, Microsoft Authenticator and biometrics were found to be the most user-friendly options for factors. They recommend these options for situations where convenience should be prioritised over cost and security. While biometrics score high on usability, \textcite[208]{karim_choosing_2024} also point out the additional risk of compromised biometric data. Once a malicious actor has obtained a person's fingerprints, they can be used for illegal purposes such as fraud or identity theft \citep[208]{karim_choosing_2024}.
+
+\textcite[50]{grassi_digital_2017} recommend integrating usability into the software development process itself so that the application remains usable and secure. They also argue that conducting a usability evaluation on the selected factors is a critical step.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Security}
+
+Ultimately, the reason to use multi-factor authentication comes down to security and protecting valuable information. Despite its benefits, MFA is not a silver bullet and attention must be paid to properly securing each of the factors. Having multiple factors protecting user accounts makes the job more difficult for attackers, but not impossible.
+
+While having two or more factors offers more protection, each of them can be compromised in various ways. Table~\ref{tab:vulnerabilities} contains a summary of possible ways that some of the commonly used authentication methods can be compromised.
+
+\begin{table}[ht]
+    \centering
+    \arrayrulecolor{gray!50}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{l | l | l}
+        \textbf{Factor}                     & \textbf{Method}     & \textbf{Threats}                \\
+        \hline
+        \multirow{2}{*}{Something you know} & Password            & Duplication, malware, phishing  \\
+        \cline{2-3}                         & PIN                 & Eavesdropping, keylogging       \\
+        \hline
+        \multirow{2}{*}{Something you have} & SMS (mobile device) & Malware, theft                  \\
+        \cline{2-3}                         & Security token      & Cloning, theft                  \\
+        \hline
+        \multirow{2}{*}{Something you are}  & Fingerprint scan    & Forgery, replication            \\
+        \cline{2-3}                         & Retinal scan        & Replication                     \\
+        \hline
+        \multirow{2}{*}{Something you do}   & Voice recognition   & Voice imitation, replay attacks \\
+        \cline{2-3}                         & Gesture recognition & Observation, replay attacks     \\
+        \hline
+        \multirow{2}{*}{Somewhere you are}  & GPS                 & Spoofing                        \\
+        \cline{2-3}                         & IP                  & VPN, proxy servers              \\
+    \end{tabular}
+    \caption{Ways to compromise commonly used factors \citep[41--45]{grassi_digital_2017}}
+    \label{tab:vulnerabilities}
+\end{table}
+
+Despite the potential vulnerabilities of each factor, software developers can attempt to mitigate the risks to their users. A critical implementation choice is to choose at least two different types of factors to be used in combination with each other so that they cannot be compromised the same way \citep{grassi_digital_2017, owasp_multifactor_2024}.
+
+For instance, if the first factor is "something you know" and is implemented as a password, the second factor should be one of the other four options. A common solution is to choose the factor "something you have" and send a verification code to the user's phone number, email address, or a separate authenticator application installed on their device. This way, the person attempting to log in would have to not only know the correct password but also have access to the user's personal means of communication to receive the verification code.
+
+To give a concrete example, let us discuss in more detail the security considerations of one of the common implementations of the ownership factor. When choosing which factors to support, developers may be tempted to go with sending verification codes as text messages (SMS). The advantages are obvious: most people already carry a mobile device in their pocket and are ready to receive messages without installing any additional software. With the rise of the smartphone in the past two decades, there is a high chance they are using the application on the same device to begin with. However, this could be a bad idea if security is a critical requirement for the application.
+
+If a user's phone number is publicly available and a malicious actor is targeting them directly, the user may become susceptible to phishing attempts or social engineering \citep{owasp_multifactor_2024}. An attacker may send a message masquerading as a legitimate MFA authentication request. Additionally, with the prevalence of mobile applications and browsing, the user may receive their MFA single-use code on the same device they are submitting their password on \citep{owasp_multifactor_2024}. This is a problem because if the device is compromised, both factors (the password and the code delivered as a text message) can be obtained by an attacker at the same time.
+
+With email, another popular method used as a \textit{something you have} factor for MFA, the user is always in control of the factor unless an attacker manages to compromise the email account via the usual methods. With SMS however, there exists a way for impersonating the victim via a method called \textit{SIM~swapping}. If the victim's phone number is known by the attacker, they can contact the mobile operator and impersonate the victim with the goal of having the victim's phone number transferred to a SIM card they control \citep{jover_security_2020}. After taking over the victim's number, any MFA single-use code would then be sent to the attacker instead. Despite being a sophisticated and highly targeted attack method, \textcite[16]{jover_security_2020} argues that SIM swapping is the greatest threat against SMS as a factor for MFA. \textcite[208]{karim_choosing_2024} also point out the issues with SMS and do not recommend using it for both security and usability reasons.
+
+There is not much that for software developers to do about SIM swapping, other than to consider using some alternative factors such as email or a separate application. \textcite{owasp_multifactor_2024} suggests considering to use a reliable third party service provider for MFA if the developer lacks resources for a proper implementation.
+
+Some mitigation strategies have been deployed on a higher level and have been successful. In Mozambique, cellular operators allow banks to check for any possible occurrences of SIM swapping for a specific account \citep[17--18]{jover_security_2020}.
+
+Staying up to date with current recommendations is important for software developers. In the past, security question were a commonly used factor for account recovery. Registered users would provide answers to several personal questions. The questions were designed so that the answers would only be known to the user such as the city where their parents met or the name of their first pet. However, this practice has fallen out of use and it is no longer recommended to be used at all \citep{owasp_multifactor_2024} \citep{grassi_digital_2017}. Security questions offer no additional benefits to passwords, yet the approach contains several flaws. The answers could potentially be known by people close to the user, be found on social media or obtained via phishing \citep{owasp_multifactor_2024}. It is possible that in the future some of the currently recommended authentication methods are deemed too flawed or insecure to use as well. Other methods should be preferred, even in the case of account recovery.
+
+When in doubt about the specific security considerations of each factor, software developers should listen to recommendations made by security experts. Two excellent documents containing useful recommendations and suggestions are the \textit{Multifactor Authentication Cheat Sheet} by \textcite{owasp_multifactor_2024} and \textit{Digital Identity Guidelines: Authentication and Lifecycle Management} published by the National Institute of Standards and Technology \citep{grassi_digital_2017}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\section{Account recovery}
+
+Software developers must consider the aspect of account recovery while implementing multi-factor authentication. What happens when a user loses access to one of their factors?
+
+In the conventional approach to multi-factor authentication, all factors must be provided for a successful verification of identity. This is especially true in the case of two-factor authentication: accepting only one of the two would render the whole process meaningless. When it comes to traditional password-based single-factor authentication, most websites offer some sort of, usually fully automated mechanism for resetting a forgotten password. Multi-factor authentication is more complicated that, yet the need to recover lost factors also concerns MFA. How should developers handle lost or stolen mobile phones, changed phone numbers or other methods used as factors that have suddenly become unavailable?
+
+As with other aspects of implementing multi-factor authentication, there is no general solution that could be applied to every single scenario. It is up to the software developer to choose the most suitable recovery methods for their specific use case and the needs of their application.
+
+Offering account recovery options is mandatory as without it, users would get permanently locked out of their accounts in case any of their factors is suddenly inaccessible. The most simple option would be to resolve any problems via customer support, but as the number of users can potentially be in the hundreds of millions, some sort of automated solution would be preferable.
+
+A common solution listed by \textcite{owasp_multifactor_2024} is to provide the user with single-use recovery codes during the initial setup process. These codes can then be stored by the user in a secure location and used to regain access in case of any inaccessible factors. However, this approach trusts the user with an increased amount of responsibility: it would be up to the user to securely store the backup codes. An alternative way is to deliver the code to the user directly when needed, using their registered (and previously verified) email address.
+
+In some situations a hardware backup solution could be considered, but they are generally used only in specific cases such as online banking or commercial settings due to higher cost \citep[110]{golla_driving_2021}. 
+
+A novel solution proposed by \textcite{li_practical_2021} is a form of multi-factor authentication called \textit{(t,n) threshold MFA} (or T-MFA for short). The idea is based on the observation that common implementations of MFA often require users to always provide every factor in order to be authenticated. If even one of the factors is missing or incorrect, authentication fails. This is also the case if the user no longer has access to one of their factors, e.g. their mobile phone.
+
+With (t,n) threshold MFA, the user selects $t$ factors out of $n$ possible options, i.e. there are $n$ factors to choose from but only $t$ of them are required for successful authentication. In a practical example \citep[Fig.~1]{li_practical_2021}, a user could have a password (something you know, \hyperref[itm:factor1]{factor~1}), a fingerprint (something you are, \hyperref[itm:factor3]{factor~3}) and three separate devices (something you have, \hyperref[itm:factor2]{factor~2}). The user could then authenticate using their password, their fingerprint and but only one of the three devices. In this case (where $t=3$ and $n=5$) the device they use would not matter, as any of them would be accepted by (t,n) threshold MFA. Even if the user loses access to their mobile phone or the device is compromised by a malicious actor, their account remains secure and they do not lose access.
+
+\textcite[15--16]{ometov_multi-factor_2018} propose a similar solution for \textit{vehicle-to-everything} (V2X) applications. A vehicle equipped with various sensors and devices, e.g. a weight sensor, a fingerprint scanner, face recognition hardware etc. \citep[Fig.~4]{ometov_multi-factor_2018}, could offer multiple ways to grant access to the vehicle. This abundance could be leveraged as MFA factors and for example, only three out of four would be needed for successful verification. Given enough possible factors to choose from, a similar solution could be applied to software applications as well.
+
+As losing access to a device is a common enough occurrence, reducing reliance on hardware should be taken as a preventive measure. \textcite[5448]{das_mfa_2020} suggest a new recovery mechanism that would take into consideration a user's past behaviour and activities on the platform. However, novel solutions such as this lack precedent and could be difficult to implement.

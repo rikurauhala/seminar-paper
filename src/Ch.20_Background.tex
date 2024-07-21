@@ -1,0 +1,23 @@
+\chapter{Background\label{ch:background}}
+
+As mentioned in chapter~\ref{ch:introduction}, password-based authentication has several disadvantages. User accounts may become compromised due to vulnerable code or human error. Once the password has been obtained by an attacker with malicious intent, there is nothing left to prevent them from logging in with the victim's credentials, as authentication is based on the assumption that the password is only known by the individual who selected it. This issue is inherent in any form of \textit{single-factor authentication} \citep[54]{fenton_digital_2017} that relies on only one method for verifying a user's identity. This is where multi-factor authentication comes into play.
+
+Instead of relying solely on a password (or a similar method such as a PIN number) for verifying a user's identity, multi-factor authentication is based on requiring users to provide more than one \textit{factor} or type of evidence of identification.
+
+As defined by \citet{owasp_multifactor_2024}, there are five main types of factors:
+
+\begin{enumerate}
+    \item \textbf{Something you know\label{itm:factor1}} - Passwords, PINs, security questions
+    \item \textbf{Something you have\label{itm:factor2}} - Security tokens, email accounts, phone numbers
+    \item \textbf{Something you are\label{itm:factor3}} - Facial features, fingerprints and other biometrics
+    \item \textbf{Something you do\label{itm:factor4}} - Typing patterns, mouse movements
+    \item \textbf{Somewhere you are\label{itm:factor5}} - Geolocation, IP addresses
+\end{enumerate}
+
+The first three factor types are the most commonly used and the definition by the U.S. National Institute of Standards and Technology only covers the three of them \citep[49]{fenton_digital_2017}. The other two have niche use cases, e.g. making certain features only accessible from a company network in the case of \hyperref[itm:factor5]{factor~5}.
+
+Multi-factor authentication is commonly implemented as \textit{two-factor authentication} (or 2FA for short) and the terms are often used interchangeably. Deciding to use more than two factors is possible but ultimately the choice depends on the context and on how much extra security is needed. The more factors are required, the more complicated the authentication process becomes.
+
+The selection of factors depends on the specific application requirements. For example, in the case of a debit card the card itself is \textit{something you have} and the PIN code is \textit{something you know}. In online banking, the bank may require their customers to use the bank's own authenticator application to verify every login and transaction. In Finland, every major bank provides a separate application for this purpose \citep{danske_id_2024, nordea_id_2024, op_mobile_2024}.
+
+Multi-factor authentication adds a lot of complexity to an already challenging aspect of software development. There are many use cases for MFA and numerous ways to implement it. This can be overwhelming for developers. While there are challenges to overcome, there are also solutions.

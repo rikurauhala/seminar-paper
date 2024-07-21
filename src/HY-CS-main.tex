@@ -1,0 +1,87 @@
+\documentclass[english,twoside,censored,seminar]{HYthesisML} 
+\PassOptionsToClass{openany,twoside,a4paper}{report}
+
+\usepackage{amsmath, amssymb}
+\usepackage[
+    backend=biber,
+    bibstyle=authoryear,
+    giveninits=true,
+    maxbibnames=99,
+    maxcitenames=3,
+    natbib=true,
+    style=authoryear,
+    uniquelist=minyear,
+    uniquename=mininit,
+    urldate=long
+]{biblatex}
+\usepackage{csquotes}
+\usepackage{colortbl}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[pdftex]{color, graphicx, hyperref}
+
+\singlespacing
+\fussy
+
+\addbibresource{bibliography.bib}
+\DeclareNameAlias{sortname}{family-given}
+
+\title{Challenges with implementing multi-factor~authentication}
+\author{Riku Rauhala}
+\date{\today}
+\supervisors{Valtteri Niemi, Markku Kojo}
+\keywords{
+    authentication,
+    cyber security,
+    multi-factor authentication,
+    two-factor authentication
+}
+\additionalinformation{Seminar: Advanced Topics in Networking and Security}
+\classification{\protect{\ \\
+\   Security and privacy $\rightarrow$ Security services $\rightarrow$ Authentication $\rightarrow$ Multi-factor authentication\
+}}
+
+\hypersetup{
+    citecolor=black,
+    colorlinks=true,
+    filecolor=magenta,
+    linkcolor=black,
+    pdfauthor={Riku Rauhala},
+    pdfcreator={},
+    pdffitwindow=false,
+    pdfmenubar=true,
+    pdfnewwindow=true,
+    pdfproducer={pdfLaTeX},
+    pdfstartview={FitH},
+    pdfsubject={},
+    pdftitle={Challenges with implementing multi-factor authentication},
+    pdftoolbar=true,
+    unicode=true,
+    urlcolor=cyan
+}
+
+\newcommand{\comment}[1]{\textcolor{gray}{#1}}
+\newcommand{\source}{(\textcolor{red}{source?})}
+
+\begin{document}
+    \maketitle
+    \include{Ch.00_Abstract}
+    \mytableofcontents
+
+    \mainmatter
+    \include{Ch.10_Introduction}
+    \include{Ch.20_Background}
+    \include{Ch.30_Challenges}
+    \include{Ch.40_Conclusion}
+    \include{Ch.50_AI}
+
+    \backmatter
+    \addcontentsline{toc}{chapter}{Usage of AI tools}
+    \addcontentsline{toc}{chapter}{\bibname}
+    \printbibliography
+\end{document}
